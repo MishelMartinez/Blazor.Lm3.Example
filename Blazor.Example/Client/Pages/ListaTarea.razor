@@ -1,0 +1,45 @@
+﻿@using Blazor.Example.Shared
+
+
+
+<h3>Resultados:</h3>
+
+<table class="table">
+
+    <thead>
+        <tr>
+            <th>Dia de la semana</th>
+            <th>Tarea</th>
+            <th>Se realizo</th>
+        </tr>
+        
+    </thead>
+    <tbody>
+        @foreach(TareaCLS tarea in list)
+        {
+            <tr>
+                <td>
+                    @tarea.dayWeek
+                </td>
+                <td>
+                    @tarea.Homework
+                </td>
+                <td>
+                    @tarea.chkCheck
+                </td>
+            </tr>
+        }
+        
+
+    </tbody>
+</table>
+
+@code {
+
+    [Parameter]
+    public List<TareaCLS> list { get; set; }
+  
+ 
+        
+
+}

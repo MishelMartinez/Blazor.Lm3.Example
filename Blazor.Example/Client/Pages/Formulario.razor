@@ -1,0 +1,67 @@
+﻿@page "/formulario"
+@using Blazor.Example.Shared
+<h3>Formulario</h3>
+
+
+<form @onsubmit="registrar">
+    <div class="form-group">
+        <label> Seleccionamos dia de la semana</label>
+        <select class="form-control" @bind="_dayWeek">
+            <option value="">Selecciona</option>
+            <option value="Lunes">Lunes</option>
+            <option value="Martes">Martes</option>
+            <option value="Miercoles">Miercoles</option>
+            <option value="Lunes">Jueves</option>
+            <option value="Jueves">Viernes</option>
+
+        </select>
+    </div>
+
+    <div class="form-group">
+        <label> ingresa Tarea</label>
+        <input type="text" class="form-control"  required  @bind="_homework" />
+
+    </div>
+
+    <div class="form-group">
+        <label>Se realizo tarea?</label>
+        <input type="checkbox" @bind="_chkCheck" />
+
+    </div>
+
+
+    <input type="submit" value="Registrar" class="btn btn-secondary" />
+
+   
+
+</form>
+
+
+<ListaTarea list="listTarea" />
+
+@code {
+    public string _dayWeek { get; set; }
+
+    public string _homework { get; set; }
+
+    public Boolean _chkCheck { get; set; }
+
+    public List<TareaCLS> listTarea = new List<TareaCLS>();
+
+
+    public void registrar()
+    {
+
+
+        listTarea.Add(new TareaCLS { dayWeek = _dayWeek, Homework = _homework, chkCheck = _chkCheck });
+        Clear();
+    }
+
+
+    public void Clear()
+    {
+        _dayWeek = "";
+        _homework = "";
+
+    }
+}
